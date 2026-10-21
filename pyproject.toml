@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-memory-agent"
+version = "0.1.0"
+description = "Local Codex connections and persistent, vector-free taxonomy agents for Python and Jupyter"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "jlee-ax"}]
+keywords = ["codex", "jupyter", "agent", "taxonomy", "sqlite"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+notebook = ["IPython>=8", "tqdm>=4.66"]
+dev = ["pytest>=8", "ruff>=0.11", "build>=1"]
+
+[project.urls]
+Homepage = "https://github.com/jlee-ax/codex-memory-agent"
+Issues = "https://github.com/jlee-ax/codex-memory-agent/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+codex_memory_agent = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
